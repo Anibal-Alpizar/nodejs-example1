@@ -6,6 +6,15 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model videojuego {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  descripcion String
+  publicar    Boolean  @default(true)
+  precio      Decimal  @db.Decimal(10, 2)
+  creatAt     DateTime @default(now())
 }
